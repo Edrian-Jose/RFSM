@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "**/Library": true,
+        "**/Logs": true,
+        "**/Packages": true,
+        "**/ProjectSettings": true,
+        "**/Temp": true,
+        "**/UserSettings": true
+    }
+}
