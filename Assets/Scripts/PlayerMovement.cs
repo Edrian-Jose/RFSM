@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject selectedObject;
+    public GameObject target;
     bool AttackMode;
     void Start()
     {
@@ -13,14 +14,13 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        Move();
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hitData = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, 0);
+        Move(worldPosition, hitData);
     }
 
 
-    void Move(){
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hitData = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, 0);
-        
+    void Move(Vector3 worldPosition, RaycastHit2D hitData){
         if (Input.GetKeyDown(KeyCode.A))
         {
             AttackMode = true;
@@ -44,13 +44,13 @@ public class PlayerMovement : MonoBehaviour
 
             if (selectedObject.tag == "NPC")
             {
+                
                 Debug.Log("Talk to NPC");
             }
 
-            if (selectedObject.tag == "Destination")
-            {
-                Debug.Log("Go to that destination");
-            }
+        }else if(Input.GetMouseButtonDown(1)){
+            target.transform.position = worldPosition;
+            Debug.Log("Go to that destination");
         }
     }
 }
