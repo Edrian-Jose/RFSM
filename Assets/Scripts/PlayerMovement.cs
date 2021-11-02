@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject selectedObject;
     public GameObject target;
+   
     bool AttackMode;
     void Start()
     {
@@ -16,11 +18,14 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hitData = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, 0);
+
         Move(worldPosition, hitData);
     }
 
 
     void Move(Vector3 worldPosition, RaycastHit2D hitData){
+        
+
         if (Input.GetKeyDown(KeyCode.A))
         {
             AttackMode = true;
