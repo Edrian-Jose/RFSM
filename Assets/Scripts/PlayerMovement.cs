@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Talk to NPC");
             }
 
-        }else if(Input.GetMouseButtonDown(1)){
+        } else if(Input.GetMouseButtonDown(1)){
             AI.endReachedDistance = range;
             target.transform.position = worldPosition;
             Debug.Log("Go to that destination");
