@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         Move(worldPosition, hitData);
     }
 
-    Vector3 GetFootPosition(Vector3 centerPos, float length = 0.08f){
+    Vector3 GetFootPosition(Vector3 centerPos, float length = 0.06f){
         return new Vector3(centerPos.x, centerPos.y - length, centerPos.z);
     }
 
