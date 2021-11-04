@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject selectedObject;
     public GameObject target;
     AIPath AI;
-
-    float range = 0.12f;
+    public float range = 0.5f;
 
     bool AttackMode;
     void Start()
@@ -26,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         Move(worldPosition, hitData);
     }
 
-    Vector3 GetFootPosition(Vector3 centerPos, float length = 0.06f){
+    Vector3 GetFootPosition(Vector3 centerPos, float length = 0.5f){
         return new Vector3(centerPos.x, centerPos.y - length, centerPos.z);
     }
 
