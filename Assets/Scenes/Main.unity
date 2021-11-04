@@ -1920,7 +1920,7 @@ GameObject:
   - component: {fileID: 1031213385}
   - component: {fileID: 1031213388}
   m_Layer: 0
-  m_Name: player_0
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
