@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject target;
     AIPath AI;
 
+    float range = 0.12f;
+
     bool AttackMode;
     void Start()
     {
@@ -29,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Move(Vector3 worldPosition, RaycastHit2D hitData){
-        
 
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
             AttackMode = true;
@@ -49,17 +51,20 @@ public class PlayerMovement : MonoBehaviour
             selectedObject = hitData.transform.gameObject;
             if (selectedObject.tag == "Enemy")
             {
-                
+                AI.endReachedDistance = range * 3;
+                target.transform.position = GetFootPosition(selectedObject.transform.position);
                 Debug.Log("Attack that enemy");
             }
 
             if (selectedObject.tag == "NPC")
             {
+                AI.endReachedDistance = range;
                 target.transform.position = GetFootPosition(selectedObject.transform.position);
                 Debug.Log("Talk to NPC");
             }
 
         }else if(Input.GetMouseButtonDown(1)){
+            AI.endReachedDistance = range;
             target.transform.position = worldPosition;
             Debug.Log("Go to that destination");
         }
