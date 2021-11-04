@@ -1,27 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Pathfinding;
 
 public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject selectedObject;
     public GameObject target;
-   
+
+    public AIPath AI;
+
     bool AttackMode;
     void Start()
     {
+        AI = GetComponent<AIPath>();
         AttackMode = false;
     }
     void Update()
     {
+        if (AI.reachedEndOfPath) 
+        {
+            OnWalkStop();
+        }
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hitData = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, 0);
 
         Move(worldPosition, hitData);
     }
 
+    void OnWalkStop(){
+        Debug.Log("Target Reached");
+    }
 
     void Move(Vector3 worldPosition, RaycastHit2D hitData){
         

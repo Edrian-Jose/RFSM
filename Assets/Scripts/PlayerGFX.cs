@@ -5,8 +5,6 @@ using Pathfinding;
 public class PlayerGFX : MonoBehaviour
 {
      public AIPath aIPath;
-
-    // Update is called once per frame
     void Update()
     {
         if (aIPath.desiredVelocity.x <= -0.01f)
