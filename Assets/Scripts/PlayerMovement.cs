@@ -5,7 +5,7 @@ using Pathfinding;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     public GameObject selectedObject;
     public GameObject target;
     public AIPath AI;
