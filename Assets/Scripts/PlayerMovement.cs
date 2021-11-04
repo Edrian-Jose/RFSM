@@ -24,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
         Move(worldPosition, hitData);
     }
 
+    Vector3 GetFootPosition(Vector3 centerPos, float length = 0.08f){
+        return new Vector3(centerPos.x, centerPos.y - length, centerPos.z);
+    }
 
     void Move(Vector3 worldPosition, RaycastHit2D hitData){
         
@@ -46,12 +49,13 @@ public class PlayerMovement : MonoBehaviour
             selectedObject = hitData.transform.gameObject;
             if (selectedObject.tag == "Enemy")
             {
+                
                 Debug.Log("Attack that enemy");
             }
 
             if (selectedObject.tag == "NPC")
             {
-                
+                target.transform.position = GetFootPosition(selectedObject.transform.position);
                 Debug.Log("Talk to NPC");
             }
 
