@@ -51,6 +51,6 @@ TagManager:
   - name: Objects
     uniqueID: 2085304041
     locked: 0
-  - name: Moveable
+  - name: Entity
     uniqueID: 3850325523
     locked: 0
