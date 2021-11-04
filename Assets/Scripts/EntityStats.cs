@@ -10,6 +10,9 @@ public struct EntityStats
     public float Dexterity;
     public float Intelligence;
     public float Wisdom;
+    public float AttackRange;
+    public float MovementSpeed;
+    public float AttackSpeed;
 }
 
 
