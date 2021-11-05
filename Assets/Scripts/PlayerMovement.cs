@@ -11,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
     AIPath AI;
     public float range = 0.5f;
 
+    public Player player;
     bool AttackMode;
     void Start()
     {
         AI = GetComponent<AIPath>();
+        player = GetComponent<Player>();
         target.transform.position = transform.position;
         AttackMode = false;
     }
@@ -69,5 +71,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Go to that destination");
         }
     }
-}
 
+    public void Teleport(int level, int zone)
+    {
+        if (!ZoneManager.isCurrentScene(level, zone))
+        {
+            player.scene = new int[2] { level, zone };
+            ZoneManager.GoTo(level, zone);
+        }
+    }
+
+}

@@ -243,6 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 8755394253932708982}
   range: 0.5
+  player: {fileID: 8755394254883938194}
 --- !u!114 &8755394254883938197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +271,7 @@ MonoBehaviour:
   graphics: {fileID: 8755394255231909086}
   cam: {fileID: 8755394254497914896}
   target: {fileID: 8755394253932708982}
+  scene: 0000000000000000
 --- !u!1 &8755394255172839593
 GameObject:
   m_ObjectHideFlags: 0

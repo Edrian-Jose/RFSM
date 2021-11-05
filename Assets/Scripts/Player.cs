@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     public Camera cam;
     public GameObject target;
 
-    public int[] scene = { 1, 1 };
+    public int[] scene = { 0, 0 };
 
     void Start()
     {
@@ -41,12 +41,8 @@ public class Player : MonoBehaviour
 
     void LoadLocation(LocationState location)
     {
-        scene = location.scene;
         SingletonManager.stopDefaultLocationUpdate = true;
-        if (!ZoneManager.isCurrentScene(scene[0], scene[1]))
-        {
-            ZoneManager.GoTo(scene[0], scene[1]);
-        }
+        movement.Teleport(location.scene[0], location.scene[1]);
         transform.position = location.position.Convert();
         transform.localScale = location.localScale.Convert();
         target.transform.position = location.position.Convert();
