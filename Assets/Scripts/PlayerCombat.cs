@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField]
-    private EntityStats stats;
     void Start()
     {
         
