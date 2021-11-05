@@ -15,7 +15,6 @@ public static class StorageSystem
 
     public static PlayerData FetchPlayerData(){
         string path = Application.persistentDataPath + "/player.data";
-
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();

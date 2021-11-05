@@ -4,5 +4,54 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    PlayerMovement movement;
+    PlayerCombat combat;
+
+    public PlayerGFX graphics;
+    public Camera cam;
+    public GameObject target;
+
+    public int[] scene = { 1, 1 };
+
+    void Start()
+    {
+        movement = GetComponent<PlayerMovement>();
+        combat = GetComponent<PlayerCombat>();
+        Load();
+        InvokeRepeating("Save", 15f, 15f);
+    }
+
+
+    public void Save()
+    {
+        PlayerData data = new PlayerData(this);
+        Debug.Log("Data saved");
+        StorageSystem.StorePlayerData(data);
+    }
+
+    public void Load()
+    {
+        PlayerData data = StorageSystem.FetchPlayerData();
+        if (data != null)
+        {
+            LoadLocation(data.location);
+        }
+    }
+
+
+    void LoadLocation(LocationState location)
+    {
+        scene = location.scene;
+        SingletonManager.stopDefaultLocationUpdate = true;
+        if (!ZoneManager.isCurrentScene(scene[0], scene[1]))
+        {
+            ZoneManager.GoTo(scene[0], scene[1]);
+        }
+        transform.position = location.position.Convert();
+        transform.localScale = location.localScale.Convert();
+        target.transform.position = location.position.Convert();
+        target.transform.localScale = location.localScale.Convert();
+    }
+
 
 }
