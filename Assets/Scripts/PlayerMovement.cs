@@ -57,9 +57,10 @@ public class PlayerMovement : MonoBehaviour
 
             if (selectedObject.tag == "NPC")
             {
-                AI.endReachedDistance = range;
-                target.transform.position = GetFootPosition(selectedObject.transform.position);
-                Debug.Log("Talk to NPC");
+                AI.endReachedDistance = range * 2;
+                // target.transform.position = GetFootPosition(selectedObject.transform.position);
+                // Debug.Log("Talk to NPC");
+                ZoneManager.GoTo(1, 1);
             }
 
         } else if(Input.GetMouseButtonDown(1)){

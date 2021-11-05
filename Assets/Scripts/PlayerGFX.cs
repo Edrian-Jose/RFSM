@@ -5,6 +5,7 @@ using Pathfinding;
 public class PlayerGFX : MonoBehaviour
 {
      public AIPath aIPath;
+    public GameObject player;
     Animator playerAnimator;
 
     void Start(){
@@ -18,9 +19,9 @@ public class PlayerGFX : MonoBehaviour
         
         if (aIPath.desiredVelocity.x <= -0.01f)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            player.transform.localScale = new Vector3(-1f, 1f, 1f);
         }else if (aIPath.desiredVelocity.x >= 0.01f){
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            player.transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }
