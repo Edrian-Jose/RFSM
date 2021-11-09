@@ -2553,7 +2553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569080811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.57, y: 1.9, z: 0}
+  m_LocalPosition: {x: 8.55, y: 2.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1442725219}
@@ -3429,6 +3429,7 @@ GameObject:
   - component: {fileID: 1442725219}
   - component: {fileID: 1442725218}
   - component: {fileID: 1442725217}
+  - component: {fileID: 1442725220}
   m_Layer: 8
   m_Name: NPCGFX
   m_TagString: NPC
@@ -3449,9 +3450,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.05017662, y: -0.22077703}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.77095366
 --- !u!212 &1442725218
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3492,7 +3493,7 @@ SpriteRenderer:
   m_SortingLayerID: -444641773
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8644128425768313520, guid: 9186aa4f9dbe0f876b9f396e9d4c0643, type: 3}
+  m_Sprite: {fileID: -3401831351653678310, guid: 62b24c8ff761130d18b92b2709c5b454, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3517,6 +3518,25 @@ Transform:
   m_Father: {fileID: 569080812}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1442725220
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442725216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36cf9c708807f720cb02e0ed5ab5ea52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1687969856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8755394255172839638, guid: e40a0e7ee99611681a5b4daf2762f485, type: 3}
