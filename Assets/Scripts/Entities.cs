@@ -22,6 +22,11 @@ public enum ItemType
     Consumable
 }
 
+
+public class Item
+{
+    public ItemGrade grade;
+}
 public enum ItemRarity
 {
     Common,
