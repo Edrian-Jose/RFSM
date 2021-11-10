@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct EntityStats 
+public struct EntityStats
 {
     public float HealthPoints;
     public float Strength;
@@ -13,6 +13,34 @@ public struct EntityStats
     public float AttackRange;
     public float MovementSpeed;
     public float AttackSpeed;
+}
+
+public enum ItemType
+{
+    Weapon,
+    Armor,
+    Consumable
+}
+
+
+public class Item
+{
+    public ItemGrade grade;
+}
+public enum ItemRarity
+{
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Unique,
+
+}
+
+public struct ItemGrade
+{
+    public ItemType type;
+    public ItemRarity rarity;
 }
 
 
@@ -49,7 +77,8 @@ public struct LocationState
 
 
 [System.Serializable]
-public class PlayerData{
+public class PlayerData
+{
     public EntityStats stats;
     public LocationState location;
 
