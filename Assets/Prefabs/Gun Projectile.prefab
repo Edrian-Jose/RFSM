@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8565637754986420584}
   - component: {fileID: 8137645639712965804}
   - component: {fileID: 1430934199755423896}
-  - component: {fileID: 4730354122187976471}
+  - component: {fileID: 2055573412118434466}
   m_Layer: 0
   m_Name: Gun Projectile
   m_TagString: Untagged
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -792617493
+  m_SortingLayerID: -2083315319
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -5705953359963207162, guid: 9186aa4f9dbe0f876b9f396e9d4c0643, type: 3}
@@ -100,7 +100,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.32, y: 0.6875}
   m_Direction: 0
---- !u!114 &4730354122187976471
+--- !u!114 &2055573412118434466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,6 +109,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 844118082338175746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dacc84fe588d66f4c9b85b2daf4f205e, type: 3}
+  m_Script: {fileID: 11500000, guid: c9260e165f1780f4e915194271e00bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
