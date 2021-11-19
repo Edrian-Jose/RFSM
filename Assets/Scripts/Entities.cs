@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -87,4 +85,16 @@ public class PlayerData
         this.location = new LocationState(player.scene, player.transform);
     }
 
+}
+
+public class Weapon
+{
+    public string Name;
+    public float Damage;
+    public string Handed;
+    public float AtkSpd;
+    public string WeaponType;
+    public string AtkType;
+    public int LevelReq;
+    public float Range;
 }

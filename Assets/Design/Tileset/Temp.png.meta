@@ -29,6 +29,18 @@ TextureImporter:
   - first:
       213: -2564419287548916881
     second: Temp_8
+  - first:
+      213: -3460902497569534638
+    second: Temp_9
+  - first:
+      213: 572266886332310835
+    second: Temp_10
+  - first:
+      213: -3725849117214362825
+    second: Temp_11
+  - first:
+      213: -5705953359963207162
+    second: Temp_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -104,6 +116,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -273,7 +297,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -294,7 +318,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,6 +326,90 @@ TextureImporter:
       bones: []
       spriteID: f6b8c7eae3a596cd0800000000000000
       internalID: -2564419287548916881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_9
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 193
+        width: 6
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25d0b1ed38768ffc0800000000000000
+      internalID: -3460902497569534638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_10
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 192
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3356e8c73b911f700800000000000000
+      internalID: 572266886332310835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_11
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 48
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7333cb1e7ff1b4cc0800000000000000
+      internalID: -3725849117214362825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Temp_12
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 33
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a427a86a160d0b0800000000000000
+      internalID: -5705953359963207162
       vertices: []
       indices: 
       edges: []

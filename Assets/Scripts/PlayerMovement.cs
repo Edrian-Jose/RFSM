@@ -1,75 +1,93 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Pathfinding;
 
-public class PlayerMovement : MonoBehaviour
+class PlayerMovement: MonoBehaviour
 {
-
+    PlayerController controller;
     GameObject selectedObject;
-    public GameObject target;
     AIPath AI;
     public float range = 0.5f;
 
     public Player player;
-    bool AttackMode;
-    void Start()
+    public GameObject playerTargetGameObject;
+    private bool aButtonPressed;
+
+    GameObject hitObject = null;
+    Vector2? targetWorldPosition;
+
+    void Start() 
     {
+        controller = GetComponent<PlayerController>();
+
+        controller.RightMousePressed += RightMousePressedHandler;
+        controller.LeftMousePressed += LeftMousePressedHandler;
+        controller.AButtonUp += AButtonUpHandler;
+
         AI = GetComponent<AIPath>();
         player = GetComponent<Player>();
-        target.transform.position = transform.position;
-        AttackMode = false;
+        playerTargetGameObject.transform.position = transform.position;
     }
+
     void Update()
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hitData = Physics2D.Raycast(new Vector2(worldPosition.x, worldPosition.y), Vector2.zero, 0);
-        Move(worldPosition, hitData);
+        Move();
+    }
+
+    void RightMousePressedHandler(Vector2 worldPosition, RaycastHit2D hitData)
+    {
+        if (hitData)
+        {
+            targetWorldPosition = hitData.transform.position;
+            hitObject = hitData.transform.gameObject;
+            if(hitObject.transform.tag == "Barricade")
+            {
+                targetWorldPosition = worldPosition;
+            }
+        }
+        else 
+        {
+            targetWorldPosition = worldPosition;
+            hitObject = null;
+        }
+        AI.endReachedDistance = range;
+    }
+
+    private void LeftMousePressedHandler(Vector2 worldPosition, RaycastHit2D hitData)
+    {
+       if(aButtonPressed && hitData)
+       {
+           if (hitData.transform.tag == "Enemy") RightMousePressedHandler(worldPosition, hitData);
+       }
+    }
+
+    private void AButtonUpHandler()
+    {
+        aButtonPressed = !aButtonPressed;
+    }
+
+    void Move()
+    {
+        if (!targetWorldPosition.HasValue)
+        {
+            return;
+        }
+        if (hitObject != null)
+        {
+            if(hitObject.transform.tag == "NPC")
+                Debug.Log("Going to NPC");
+            
+        }
+        playerTargetGameObject.transform.position = GetFootPosition(targetWorldPosition.Value);
     }
 
     Vector3 GetFootPosition(Vector3 centerPos, float length = 0.5f){
         return new Vector3(centerPos.x, centerPos.y - length, centerPos.z);
     }
 
-    void Move(Vector3 worldPosition, RaycastHit2D hitData){
-
-        
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            AttackMode = true;
-        }
-        
-        if (hitData && AttackMode && Input.GetMouseButtonDown(0))
-        {
-            AttackMode = false;
-            selectedObject = hitData.transform.gameObject;
-            Debug.Log("Will Attack enemies");
-        }
-
-        if (hitData && Input.GetMouseButtonDown(1))
-        {
-            AttackMode = false;
-            selectedObject = hitData.transform.gameObject;
-            if (selectedObject.tag == "Enemy")
-            {
-                AI.endReachedDistance = range * 3;
-                target.transform.position = GetFootPosition(selectedObject.transform.position);
-                Debug.Log("Attack that enemy");
-            }
-
-            if (selectedObject.tag == "NPC")
-            {
-                AI.endReachedDistance = range * 2;
-                // target.transform.position = GetFootPosition(selectedObject.transform.position);
-                // Debug.Log("Talk to NPC");
-                ZoneManager.GoTo(1, 1);
-            }
-
-        } else if(Input.GetMouseButtonDown(1)){
-            AI.endReachedDistance = range;
-            target.transform.position = worldPosition;
-            Debug.Log("Go to that destination");
-        }
+    public void SetTargetPosition (Vector2 position)
+    {
+        targetWorldPosition = position;
     }
 
     public void Teleport(int level, int zone)
@@ -80,5 +98,4 @@ public class PlayerMovement : MonoBehaviour
             ZoneManager.GoTo(level, zone);
         }
     }
-
 }
