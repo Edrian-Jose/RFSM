@@ -16,7 +16,7 @@ TagManager:
   - Water
   - UI
   - Obstacle
-  - 
+  - Enemy
   - Clickable
   - 
   - 
@@ -48,7 +48,7 @@ TagManager:
   - name: Ground
     uniqueID: 3658989623
     locked: 0
-  - name: Obstacles
+  - name: Background
     uniqueID: 2733691109
     locked: 0
   - name: Objects
@@ -56,4 +56,7 @@ TagManager:
     locked: 0
   - name: Entity
     uniqueID: 3850325523
+    locked: 0
+  - name: Foreground
+    uniqueID: 1576392083
     locked: 0
