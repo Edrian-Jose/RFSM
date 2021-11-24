@@ -317,6 +317,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5648129197914938141, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
   m_PrefabInstance: {fileID: 1746180761}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &772835799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5648129198497443232, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
+  m_PrefabInstance: {fileID: 1746180761}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &772835800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772835799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfe68d4afb899cda9d52ba8329e0f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &845716976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a190a5378d5319fb4abd63c318de2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
 --- !u!58 &1248165060
 CircleCollider2D:
   m_ObjectHideFlags: 0

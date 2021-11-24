@@ -12,15 +12,26 @@ public class Inventory : MonoBehaviour
     {
         items = new Dictionary<int, Item>();
     }
+
+
     public void AddItem(Item item)
     {
+        int indexOfItem = 0;
         for (int i = 0; i <= (highestIndex + 1); i++)
         {
             if (!items.ContainsKey(i))
             {
                 items.Add(i, item);
-                Debug.Log(items[i].grade.rarity);
+                indexOfItem = i;
+                break;
             }
         }
+
+        if (indexOfItem > highestIndex)
+        {
+            highestIndex = indexOfItem;
+        }
+        Debug.Log(items[indexOfItem].grade.rarity);
+        Debug.Log("Highest Index " + highestIndex);
     }
 }
