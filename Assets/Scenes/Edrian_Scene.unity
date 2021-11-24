@@ -209,7 +209,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -444641773
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2468451294535392998, guid: 9186aa4f9dbe0f876b9f396e9d4c0643, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -595,7 +595,7 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1561276187
+  m_SortingLayerID: 2085304041
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -2454,7 +2454,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -444641773
-  m_SortingLayer: 4
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -3401831351653678310, guid: 62b24c8ff761130d18b92b2709c5b454, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2611,6 +2611,14 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.10550833
       objectReference: {fileID: 0}
+    - target: {fileID: 5648129197873172250, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5648129197873172250, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 2085304041
+      objectReference: {fileID: 0}
     - target: {fileID: 5648129197873172251, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.5
@@ -2673,7 +2681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5648129198497442911, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
       propertyPath: range
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5648129198497442911, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
       propertyPath: m_Enabled
@@ -2685,7 +2693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5648129198497443234, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
       propertyPath: radius
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 5648129198497443234, guid: bd1116f2f5b3d034e98f16c78c109980, type: 3}
       propertyPath: m_Enabled
