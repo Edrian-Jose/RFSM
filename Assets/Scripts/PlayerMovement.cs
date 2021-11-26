@@ -81,8 +81,10 @@ class PlayerMovement: MonoBehaviour
         playerTargetGameObject.transform.position = GetFootPosition(targetWorldPosition.Value);
     }
 
-    Vector3 GetFootPosition(Vector3 centerPos, float length = 0.5f){
-        return new Vector3(centerPos.x, centerPos.y /*- length*/, centerPos.z);
+
+    Vector3 GetFootPosition(Vector3 centerPos, float length = 0f)
+    {
+        return new Vector3(centerPos.x, centerPos.y - length, centerPos.z);
     }
 
     public void SetTargetPosition (Vector2 position)

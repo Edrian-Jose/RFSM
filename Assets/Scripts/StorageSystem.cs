@@ -8,7 +8,7 @@ public static class StorageSystem
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.data";
         FileStream stream = new FileStream(path, FileMode.Create);
-
+        Debug.Log("Data saved in " + path);
         formatter.Serialize(stream, data);
         stream.Close();
     }
