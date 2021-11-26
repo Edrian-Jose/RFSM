@@ -5,16 +5,22 @@ using Pathfinding;
 class PlayerMovement: MonoBehaviour
 {
     PlayerController controller;
-    GameObject selectedObject;
     AIPath AI;
     public float range = 0.5f;
 
     public Player player;
     public GameObject playerTargetGameObject;
-    private bool aButtonPressed;
 
     GameObject hitObject = null;
     Vector2? targetWorldPosition;
+
+    // for testing/coding purpose only. to be deleted//
+    public Weapon weapon = new Weapon()
+    {
+        Name = "New weap",
+        AtkSpd = 0.5f,
+        Range = 1f
+    };
 
     void Start() 
     {
@@ -22,7 +28,6 @@ class PlayerMovement: MonoBehaviour
 
         controller.RightMousePressed += RightMousePressedHandler;
         controller.LeftMousePressed += LeftMousePressedHandler;
-        controller.AButtonUp += AButtonUpHandler;
 
         AI = GetComponent<AIPath>();
         player = GetComponent<Player>();
@@ -55,16 +60,12 @@ class PlayerMovement: MonoBehaviour
 
     private void LeftMousePressedHandler(Vector2 worldPosition, RaycastHit2D hitData)
     {
-       if(aButtonPressed && hitData)
+       if(hitData && hitData.transform.tag == "Enemy")
        {
-           if (hitData.transform.tag == "Enemy") RightMousePressedHandler(worldPosition, hitData);
+           hitObject = hitData.transform.gameObject;
        }
     }
 
-    private void AButtonUpHandler()
-    {
-        aButtonPressed = !aButtonPressed;
-    }
 
     void Move()
     {
@@ -76,13 +77,12 @@ class PlayerMovement: MonoBehaviour
         {
             if(hitObject.transform.tag == "NPC")
                 Debug.Log("Going to NPC");
-            
         }
         playerTargetGameObject.transform.position = GetFootPosition(targetWorldPosition.Value);
     }
 
     Vector3 GetFootPosition(Vector3 centerPos, float length = 0.5f){
-        return new Vector3(centerPos.x, centerPos.y - length, centerPos.z);
+        return new Vector3(centerPos.x, centerPos.y /*- length*/, centerPos.z);
     }
 
     public void SetTargetPosition (Vector2 position)
