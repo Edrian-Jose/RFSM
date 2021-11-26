@@ -17,9 +17,13 @@ namespace Pathfinding {
 	public class Patrol : VersionedMonoBehaviour {
 		/// <summary>Target points to move to in order</summary>
 		public Transform[] targets;
+		[SerializeField] private Transform[] waypoints;
 
 		/// <summary>Time in seconds to wait at each target</summary>
 		public float delay = 0;
+		public float chaseDuration = 2f;
+		public float enemyRadius = 3f;
+		public LayerMask playerLayerMask;
 
 		/// <summary>Current target index</summary>
 		int index;
@@ -32,9 +36,22 @@ namespace Pathfinding {
 			agent = GetComponent<IAstarAI>();
 		}
 
+		void Start() {
+			waypoints = targets;
+		}
+
 		/// <summary>Update is called once per frame</summary>
 		void Update () {
+
 			if (targets.Length == 0) return;
+			
+			CheckPlayerInRange();
+			
+			Patrolling();
+			
+		}
+
+		void Patrolling() {		
 
 			bool search = false;
 
@@ -55,5 +72,52 @@ namespace Pathfinding {
 
 			if (search) agent.SearchPath();
 		}
+
+		public void CheckPlayerInRange() 
+		{
+			Transform playerTransform = null;
+			Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, enemyRadius, playerLayerMask);
+			if(colliders != null)
+			{
+				foreach(Collider2D c in colliders)
+				{
+					if(c.transform.tag == "Player")
+					{
+						RaycastHit2D hit = Physics2D.Linecast(transform.position, c.transform.position, playerLayerMask);
+						if(hit.collider.tag == "Player")
+						{
+							playerTransform = hit.transform;
+						}
+					}
+				}
+			}
+			if(playerTransform != null)
+			{
+				SetTargets(new Transform[] {playerTransform});
+			}
+			else{
+				SetTargets(waypoints);
+			}
+		}
+
+		IEnumerator ChaseCoroutine(Transform toChaseTransform)
+		{
+			SetTargets( new Transform[] {toChaseTransform});
+			yield return new WaitForSeconds(chaseDuration);
+			SetTargets(waypoints);
+		}
+
+		public void SetTargets(Transform[] newTargets) 
+		{
+			targets = newTargets;
+		}
+
+		 void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.green;
+			Gizmos.DrawWireSphere(transform.position, enemyRadius);
+		}
+
+
 	}
 }

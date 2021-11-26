@@ -5,10 +5,8 @@ using UnityEngine;
 class PlayerCombat: MonoBehaviour
 {
     public bool isAttacking = false;
-    [SerializeField] private bool aButtonPressed = false;
     [SerializeField] private bool weaponReady = true;
     [SerializeField] private bool autoAttack = false;
-    float circleRadius = 15f;
     public LayerMask enemyLayerMask;
 
     // for testing/coding purpose only. to be deleted//
@@ -16,7 +14,7 @@ class PlayerCombat: MonoBehaviour
     {
         Name = "New weap",
         AtkSpd = 0.5f,
-        Range = 4f
+        Range = 1f
     };
 
     public GameObject weaponInHand;
@@ -26,7 +24,7 @@ class PlayerCombat: MonoBehaviour
     public GameObject target = null;
 
     /** new **/
-    PlayerController controller;
+    private PlayerController controller;
     
     void Start() 
     {
@@ -39,6 +37,12 @@ class PlayerCombat: MonoBehaviour
     }
     void Update() 
     {
+        
+        if(!isAttacking)
+        {  
+            Vector3 mouseInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            HandleWeaponRotation( mouseInput,weaponInHand);
+        }
         if (target == null && isAttacking) 
         {
             Collider2D[] enemy = Physics2D.OverlapCircleAll(transform.position, weapon.Range, enemyLayerMask);
@@ -65,6 +69,7 @@ class PlayerCombat: MonoBehaviour
         if(CanAttack() && isAttacking)
         {
             Attack();
+            transform.position = this.transform.position;
         }
     }
 
@@ -94,7 +99,7 @@ class PlayerCombat: MonoBehaviour
     private void RangeAttack()
     {
         //Launch Projectile at Enemy
-        HandleWeaponRotation(target.transform, weaponInHand);
+        HandleWeaponRotation(target.transform.position, weaponInHand);
         GameObject bullet = Instantiate(projectile, gunPoint.position, weaponInHand.transform.rotation);
         bullet.GetComponent<Projectile>().SetTargetTransform(target.transform);
     }
@@ -106,9 +111,9 @@ class PlayerCombat: MonoBehaviour
         Debug.Log("Melee Attack!");
     }
 
-    private void HandleWeaponRotation(Transform transform, GameObject weapon)
+    private void HandleWeaponRotation(Vector3 vector, GameObject weapon)
     {
-        Vector2 difference = transform.position - weapon.transform.position;
+        Vector2 difference = vector - weapon.transform.position;
         float rotz = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         weapon.transform.rotation = Quaternion.Euler(0f, 0f, rotz + offset);
     }
@@ -122,7 +127,6 @@ class PlayerCombat: MonoBehaviour
 
     private void RightMousePressedHandler(Vector2 worldPosition, RaycastHit2D hitData)
     {
-        aButtonPressed = false;
         if (hitData && hitData.transform.tag == "Enemy") 
         {
             target = hitData.transform.gameObject; 
