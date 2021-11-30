@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
         combat = GetComponent<PlayerCombat>();
-        Load();
+        //Load();
         InvokeRepeating("Save", 15f, 15f);
     }
 
