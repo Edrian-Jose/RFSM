@@ -48,9 +48,21 @@ TagManager:
   - name: Ground
     uniqueID: 3658989623
     locked: 0
-  - name: Entities
+  - name: Background
+    uniqueID: 2733691109
+    locked: 0
+  - name: Entity
+    uniqueID: 3850325523
+    locked: 0
+  - name: Walls
+    uniqueID: 3305745373
+    locked: 0
+  - name: Objects
     uniqueID: 2085304041
     locked: 0
-  - name: Tilemap
-    uniqueID: 3337338271
+  - name: Foreground
+    uniqueID: 1576392083
+    locked: 0
+  - name: New Layer
+    uniqueID: 2124967713
     locked: 0
