@@ -13,6 +13,11 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+        if (canvas)
+        {
+            canvas.gameObject.SetActive(false);
+        }
+
         items = new Dictionary<int, Item>();
     }
 
