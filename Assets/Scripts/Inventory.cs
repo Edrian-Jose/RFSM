@@ -6,11 +6,22 @@ public class Inventory : MonoBehaviour
 {
     public Dictionary<int, Item> items;
 
+    [SerializeField]
+    private Canvas canvas;
+
     int highestIndex = 0;
 
     void Start()
     {
         items = new Dictionary<int, Item>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            canvas.gameObject.SetActive(!canvas.gameObject.activeSelf);
+        }
     }
 
 
