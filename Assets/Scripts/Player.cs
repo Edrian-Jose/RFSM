@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
         combat = GetComponent<PlayerCombat>();
-        //Load();
+        // Load();
         InvokeRepeating("Save", 15f, 15f);
     }
 
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     void LoadLocation(LocationState location)
     {
         SingletonManager.stopDefaultLocationUpdate = true;
-        movement.Teleport(location.scene[0], location.scene[1]);
+        // movement.Teleport(location.scene[0], location.scene[1]);
         transform.position = location.position.Convert();
         transform.localScale = location.localScale.Convert();
         target.transform.position = location.position.Convert();
