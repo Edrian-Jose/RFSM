@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public Dictionary<int, Item> items;
+    public Dictionary<GearSlot, Item> gear;
 
     [SerializeField]
     private Canvas canvas;
@@ -50,4 +51,22 @@ public class Inventory : MonoBehaviour
         Debug.Log(items[indexOfItem].grade.rarity);
         Debug.Log("Highest Index " + highestIndex);
     }
+
+    public void AddToGear(GearSlot slot, int index)
+    {
+
+        Item temp = null;
+        if (gear.ContainsKey(slot))
+        {
+            temp = gear[slot];
+        }
+
+        gear[slot] = items[index];
+
+        if (temp != null)
+        {
+            items[index] = temp;
+        }
+    }
+
 }

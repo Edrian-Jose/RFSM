@@ -6,7 +6,9 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
 
+    public int index;
 
+    public Item item;
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("OnDrop");

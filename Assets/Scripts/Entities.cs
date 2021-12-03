@@ -20,6 +20,19 @@ public enum ItemType
     Consumable
 }
 
+public enum GearSlot
+{
+    Head,
+    Chest,
+    Weapon,
+    Hands,
+    Ring,
+    Feet,
+    Trinket,
+    HealingPotion,
+    ManaPotion
+}
+
 
 public class Item
 {
