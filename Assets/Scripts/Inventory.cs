@@ -7,6 +7,8 @@ public class Inventory : MonoBehaviour
     public Dictionary<int, Item> items;
     public Dictionary<GearSlot, Item> gear;
 
+    public InventoryBag[] bags;
+
     [SerializeField]
     private Canvas canvas;
 
@@ -20,12 +22,14 @@ public class Inventory : MonoBehaviour
         }
 
         items = new Dictionary<int, Item>();
+        FillInventory();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
+            FillInventory();
             canvas.gameObject.SetActive(!canvas.gameObject.activeSelf);
         }
     }
@@ -69,4 +73,19 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void FillInventory()
+    {
+        foreach (int index in items.Keys)
+        {
+            Item item = items[index];
+            int bagIndex = index / 20;
+            Debug.Log("bagIndex: " + bagIndex);
+            int bagSlotIndex = index - (20 * bagIndex);
+            InventoryBag bag = bags[bagIndex];
+            ItemSlot slot = bag.slots[bagSlotIndex];
+            slot.item = item;
+            slot.index = index;
+            Debug.Log(bagIndex + ", " + bagSlotIndex + ", " + index + ", " + item.grade.rarity);
+        }
+    }
 }
