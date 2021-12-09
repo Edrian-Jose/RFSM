@@ -34,7 +34,6 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            FillInventory();
             canvas.gameObject.SetActive(!canvas.gameObject.activeSelf);
         }
     }
@@ -53,14 +52,37 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        FillInventorySlot(indexOfItem);
         if (indexOfItem > highestIndex)
         {
             highestIndex = indexOfItem;
         }
         Debug.Log(items[indexOfItem].grade.rarity);
         Debug.Log("Highest Index " + highestIndex);
+
     }
 
+    public void MoveItem(int from, int to)
+    {
+        Item aux = new Item();
+        bool auxExist = false;
+        if (items.ContainsKey(to))
+        {
+            auxExist = true;
+            aux = items[to];
+            items.Remove(to);
+        }
+        items.Add(to, items[from]);
+        items.Remove(from);
+        PlaceItem(to);
+
+        if (auxExist)
+        {
+            items[from] = aux;
+            PlaceItem(from);
+        }
+
+    }
     public void AddToGear(GearSlot slot, int index)
     {
 
@@ -82,19 +104,31 @@ public class Inventory : MonoBehaviour
     {
         foreach (int index in items.Keys)
         {
-            Item item = items[index];
-            int bagIndex = index / 20;
-            Debug.Log("bagIndex: " + bagIndex);
-            int bagSlotIndex = index - (20 * bagIndex);
-            InventoryBag bag = bags[bagIndex];
-            ItemSlot slot = bag.slots[bagSlotIndex];
-            slot.item = item;
-            slot.index = index;
-            Debug.Log(bagIndex + ", " + bagSlotIndex + ", " + index + ", " + item.grade.rarity);
-            GameObject itemObject = Instantiate(itemPrefab, BagItems[bagIndex]);
-            itemObject.GetComponent<RectTransform>().anchoredPosition = slot.gameObject.GetComponent<RectTransform>().anchoredPosition;
-            itemObject.GetComponent<DragDrop>().canvas = canvas;
+            FillInventorySlot(index);
         }
+    }
+
+    public void FillInventorySlot(int index)
+    {
+        int bagIndex = index / 20;
+        ItemSlot slot = PlaceItem(index);
+        GameObject itemObject = Instantiate(itemPrefab, BagItems[bagIndex]);
+        itemObject.GetComponent<RectTransform>().anchoredPosition = slot.gameObject.GetComponent<RectTransform>().anchoredPosition;
+        itemObject.GetComponent<DragDrop>().canvas = canvas;
+        itemObject.GetComponent<InventoryItem>().index = index;
+        itemObject.GetComponent<InventoryItem>().inventory = this;
+    }
+
+    public ItemSlot PlaceItem(int index)
+    {
+        Item item = items[index];
+        int bagIndex = index / 20;
+        int bagSlotIndex = index - (20 * bagIndex);
+        InventoryBag bag = bags[bagIndex];
+        ItemSlot slot = bag.slots[bagSlotIndex];
+        slot.item = item;
+        slot.index = index;
+        return slot;
     }
 
 

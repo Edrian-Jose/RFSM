@@ -7,6 +7,10 @@ public class InventoryItem : MonoBehaviour
 {
     public Image itemImage;
     Item item;
+
+    public Inventory inventory;
+
+    public int index;
     void Start()
     {
         itemImage = GetComponent<Image>();

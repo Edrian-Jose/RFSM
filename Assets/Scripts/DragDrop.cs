@@ -9,14 +9,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public Canvas canvas;
     private CanvasGroup canvasGroup;
     RectTransform rectTransform;
+    public Vector2 startPosition;
+
+    public int startIndex;
 
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        startPosition = rectTransform.anchoredPosition;
+        startIndex = GetComponent<InventoryItem>().index;
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        startPosition = rectTransform.anchoredPosition;
+        startIndex = GetComponent<InventoryItem>().index;
         Debug.Log("OnBeginDrag");
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
@@ -24,9 +31,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)
     {
+
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+        int endIndex = GetComponent<InventoryItem>().index;
+
+        if (endIndex == startIndex)
+        {
+            rectTransform.anchoredPosition = startPosition;
+        }
     }
     public void OnDrag(PointerEventData eventData)
     {
