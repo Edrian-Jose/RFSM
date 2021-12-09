@@ -41,6 +41,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             rectTransform.anchoredPosition = startPosition;
         }
+        else
+        {
+            startPosition = rectTransform.anchoredPosition;
+        }
     }
     public void OnDrag(PointerEventData eventData)
     {
