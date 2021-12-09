@@ -5,9 +5,12 @@ using UnityEngine;
 public class ItemsManager : MonoBehaviour
 {
     [SerializeField]
-    List<Sprite> consumableItems;
+    public List<Sprite> Weapon;
 
     [SerializeField]
-    List<Sprite> equipableItems;
+    public List<Sprite> Armor;
+
+    [SerializeField]
+    public List<Sprite> Consumable;
 
 }

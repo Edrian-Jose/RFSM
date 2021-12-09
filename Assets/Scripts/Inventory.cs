@@ -7,7 +7,12 @@ public class Inventory : MonoBehaviour
     public Dictionary<int, Item> items;
     public Dictionary<GearSlot, Item> gear;
 
+    public ItemsManager itemsManager;
+
     public InventoryBag[] bags;
+
+    public GameObject itemPrefab;
+    public Transform[] BagItems;
 
     [SerializeField]
     private Canvas canvas;
@@ -86,6 +91,25 @@ public class Inventory : MonoBehaviour
             slot.item = item;
             slot.index = index;
             Debug.Log(bagIndex + ", " + bagSlotIndex + ", " + index + ", " + item.grade.rarity);
+            GameObject itemObject = Instantiate(itemPrefab, BagItems[bagIndex]);
+            itemObject.GetComponent<RectTransform>().anchoredPosition = slot.gameObject.GetComponent<RectTransform>().anchoredPosition;
+            itemObject.GetComponent<DragDrop>().canvas = canvas;
+        }
+    }
+
+
+    public Sprite GetItemGFX(Item item)
+    {
+        switch (item.grade.type)
+        {
+            case ItemType.Weapon:
+                return itemsManager.Weapon[item.gfxIndex];
+            case ItemType.Armor:
+                return itemsManager.Armor[item.gfxIndex];
+            case ItemType.Consumable:
+                return itemsManager.Consumable[item.gfxIndex];
+            default:
+                return itemsManager.Consumable[0];
         }
     }
 }

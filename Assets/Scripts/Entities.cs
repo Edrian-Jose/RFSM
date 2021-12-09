@@ -37,6 +37,7 @@ public enum GearSlot
 public class Item
 {
     public ItemGrade grade;
+    public int gfxIndex;
 }
 public enum ItemRarity
 {

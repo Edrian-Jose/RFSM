@@ -12,6 +12,7 @@ public class ItemObject : MonoBehaviour
     {
         //TODO: remove this in the future
         item = new Item();
+        item.gfxIndex = 0;
         item.grade.type = ItemType.Consumable;
         item.grade.rarity = (ItemRarity)Random.Range(0, 4);
         Debug.Log(item.grade.rarity);
