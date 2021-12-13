@@ -20,10 +20,24 @@ public enum ItemType
     Consumable
 }
 
+public enum GearSlot
+{
+    Head,
+    Chest,
+    Weapon,
+    Hands,
+    Ring,
+    Feet,
+    Trinket,
+    HealingPotion,
+    ManaPotion
+}
+
 
 public class Item
 {
     public ItemGrade grade;
+    public int gfxIndex;
 }
 public enum ItemRarity
 {
