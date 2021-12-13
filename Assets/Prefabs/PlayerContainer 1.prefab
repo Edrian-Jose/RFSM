@@ -151,8 +151,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2083315319
-  m_SortingLayer: 0
+  m_SortingLayerID: 1576392083
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -3725849117214362825, guid: 9186aa4f9dbe0f876b9f396e9d4c0643, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -298,8 +298,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -444641773
-  m_SortingLayer: 3
+  m_SortingLayerID: 1576392083
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -440787928292665409, guid: 14e304fd7a4750ac5bd0a2330252990b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -311,7 +311,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &5648129197873172247
 Animator:
   serializedVersion: 3
@@ -344,8 +344,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.045, y: -0.15}
-  m_Size: {x: 0.39, y: 0.7}
+  m_Offset: {x: 0.03, y: -0.16}
+  m_Size: {x: 0.35, y: 0.8}
   m_Direction: 0
 --- !u!114 &5648129197873172245
 MonoBehaviour:
@@ -546,7 +546,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
-  aButtonPressed: 0
   weaponReady: 1
   autoAttack: 0
   enemyLayerMask:
