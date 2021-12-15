@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public Dictionary<int, Item> items;
+
     public Dictionary<GearSlot, Item> gear;
 
     public ItemsManager itemsManager;
@@ -78,7 +79,7 @@ public class Inventory : MonoBehaviour
 
         if (auxExist)
         {
-            items[from] = aux;
+            items.Add(from, aux);
             PlaceItem(from);
         }
 
