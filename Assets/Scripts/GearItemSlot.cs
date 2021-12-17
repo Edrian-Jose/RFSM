@@ -22,6 +22,7 @@ public class GearItemSlot : MonoBehaviour, IDropHandler
         Debug.Log("OnDrop on Slot");
         if (eventData.pointerDrag != null)
         {
+            int oldIndex = eventData.pointerDrag.GetComponent<InventoryItem>().index;
             if (inventory.gear.ContainsKey(gearSlot))
             {
                 //move to inventory

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     [SerializeField]
     public Canvas canvas;
@@ -58,6 +58,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         Debug.Log("OnPointerDown");
     }
 
+    public void OnDrop(PointerEventData eventData)
+    {
+        int droppingItemIndex = eventData.pointerDrag.GetComponent<InventoryItem>().index;
+        int thisIndex = GetComponent<InventoryItem>().index;
+        var droppingItemPos = eventData.pointerDrag.GetComponent<DragDrop>().startPosition;
+        eventData.pointerDrag.GetComponent<InventoryItem>().index = thisIndex;
+        GetComponent<InventoryItem>().index = droppingItemIndex;
+        eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        GetComponent<RectTransform>().anchoredPosition = droppingItemPos;
+        eventData.pointerDrag.GetComponent<InventoryItem>().inventory.MoveItem(droppingItemIndex, thisIndex);
+        GetComponent<InventoryItem>().inventory.MoveItem(thisIndex, droppingItemIndex);
 
+    }
 
 }
