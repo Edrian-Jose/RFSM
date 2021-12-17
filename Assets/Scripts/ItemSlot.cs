@@ -24,10 +24,21 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             if (!inventory.items.ContainsKey(index))
             {
+                bool equipped = eventData.pointerDrag.GetComponent<InventoryItem>().equipped;
                 int oldIndex = eventData.pointerDrag.GetComponent<InventoryItem>().index;
                 eventData.pointerDrag.GetComponent<InventoryItem>().index = this.index;
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-                eventData.pointerDrag.GetComponent<InventoryItem>().inventory.MoveItem(oldIndex, index);
+                if (!equipped)
+                {
+                    eventData.pointerDrag.GetComponent<InventoryItem>().inventory.MoveItem(oldIndex, index);
+                }
+                else
+                {
+                    Item droppingItem = eventData.pointerDrag.GetComponent<InventoryItem>().item;
+                    eventData.pointerDrag.GetComponent<InventoryItem>().equipped = false;
+                    eventData.pointerDrag.GetComponent<InventoryItem>().inventory.RemoveFromGear(droppingItem.slotType, this.index);
+                }
+
             }
 
         }

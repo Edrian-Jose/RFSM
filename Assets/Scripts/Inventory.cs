@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField]
+    InventoryManager manager;
     public Dictionary<int, Item> items;
 
     public Dictionary<GearSlot, Item> gear;
@@ -22,10 +24,6 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        if (canvas)
-        {
-            canvas.gameObject.SetActive(false);
-        }
 
         items = new Dictionary<int, Item>();
         gear = new Dictionary<GearSlot, Item>();
@@ -36,7 +34,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            canvas.gameObject.SetActive(!canvas.gameObject.activeSelf);
+            manager.ToggleInventory();
         }
     }
 
@@ -74,10 +72,12 @@ public class Inventory : MonoBehaviour
             aux = items[to];
             items.Remove(to);
         }
-        items.Add(to, items[from]);
-        items.Remove(from);
-        PlaceItem(to);
-
+        if (items.ContainsKey(from))
+        {
+            items.Add(to, items[from]);
+            items.Remove(from);
+            PlaceItem(to);
+        }
         if (auxExist)
         {
             items.Add(from, aux);
@@ -104,6 +104,11 @@ public class Inventory : MonoBehaviour
         {
             items.Remove(index);
         }
+    }
+    public void RemoveFromGear(GearSlot slot, int index)
+    {
+        items[index] = gear[slot];
+        gear.Remove(slot);
     }
 
     public void FillInventory()
