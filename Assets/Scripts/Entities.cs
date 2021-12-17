@@ -30,12 +30,14 @@ public enum GearSlot
     Feet,
     Trinket,
     HealingPotion,
-    ManaPotion
+    ManaPotion,
+    NotApplicable
 }
 
 
 public class Item
 {
+    public GearSlot slotType;
     public ItemGrade grade;
     public int gfxIndex;
 }

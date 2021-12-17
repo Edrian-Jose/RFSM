@@ -1300,6 +1300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 8
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &323579446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1900,6 +1901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 7
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!114 &580616790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2028,6 +2030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 1
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &644994734
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,6 +3261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 6
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &943579196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,6 +4364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 3
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &1248165056
 GameObject:
   m_ObjectHideFlags: 0
@@ -6978,6 +6983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 2
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &1578902277
 GameObject:
   m_ObjectHideFlags: 0
@@ -8317,6 +8323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 4
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &1804784527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8619,6 +8626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 0
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &1944944536
 GameObject:
   m_ObjectHideFlags: 0
@@ -8799,6 +8807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSlot: 5
   inventory: {fileID: 772835800}
+  index: 0
 --- !u!1 &2002039770
 GameObject:
   m_ObjectHideFlags: 0

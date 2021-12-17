@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
         }
 
         items = new Dictionary<int, Item>();
+        gear = new Dictionary<GearSlot, Item>();
         FillInventory();
     }
 
@@ -99,6 +100,10 @@ public class Inventory : MonoBehaviour
         {
             items[index] = temp;
         }
+        else
+        {
+            items.Remove(index);
+        }
     }
 
     public void FillInventory()
@@ -117,6 +122,7 @@ public class Inventory : MonoBehaviour
         itemObject.GetComponent<RectTransform>().anchoredPosition = slot.gameObject.GetComponent<RectTransform>().anchoredPosition;
         itemObject.GetComponent<DragDrop>().canvas = canvas;
         itemObject.GetComponent<InventoryItem>().index = index;
+        itemObject.GetComponent<InventoryItem>().item = slot.item;
         itemObject.GetComponent<InventoryItem>().inventory = this;
     }
 
